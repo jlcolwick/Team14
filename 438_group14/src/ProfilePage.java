@@ -1,3 +1,5 @@
+import java.awt.MouseInfo;
+
 import javax.swing.JFrame;
 
 
@@ -10,6 +12,7 @@ public class ProfilePage extends JFrame{
 		ProfilePagePanel profilePanel = new ProfilePagePanel();
 		f.add(profilePanel);
 		f.setVisible(true);
+		f.setLocation(MouseInfo.getPointerInfo().getLocation());
 		System.out.println("panel up?");
 		f.pack();
 

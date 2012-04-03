@@ -115,10 +115,15 @@ public class ProfilePagePanel extends JPanel implements ActionListener{
 
 	private void handleEditButton(){
 		System.out.println("Got edit button!");
+		
+		//wipe contents, change all but ID to input text
+		
+	
 	}
 	private void handleCloseButton(){
-		//System.out.println("handle Clear button");
 		System.out.println("Got close button!");
+		System.exit(0);
+	
 	
 	}
 	
