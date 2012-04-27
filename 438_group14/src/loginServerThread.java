@@ -36,21 +36,12 @@ public class loginServerThread extends Thread{
 		for(;;){
 			try {
 				socket = loginSocket.accept();
-				in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-				out = new PrintWriter(socket.getOutputStream(), true);
-		        while(!in.ready()){};
-				System.out.println(in.readLine());
-				System.out.println("Sending return");
-				out.println("Successful");
-				out.flush();
-		        in.close();
-		        socket.close();
+				new loginServiceThread(socket).run();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		
 		}
-		
-		
 	}
 }
