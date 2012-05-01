@@ -30,12 +30,13 @@ public class loginServerThread extends Thread{
 	}
 	
 	public void run(){
-		System.out.println("Server Started");
-		System.out.println("Server is running on port: " + loginSocket.getLocalPort());
+		System.out.println("Login Server Started");
+		System.out.println("Login Server is running on port: " + loginSocket.getLocalPort());
 		
 		for(;;){
 			try {
 				socket = loginSocket.accept();
+				System.out.println("New Connection to Login Server");
 				new loginServiceThread(socket).run();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

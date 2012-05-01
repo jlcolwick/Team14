@@ -6,20 +6,20 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 
-public class loginServerTest {
-    public static void main(String[] args){
+public class chatServerTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
 		try {
-			 Socket skt = new Socket("localHost", 9000);
+			 Socket skt = new Socket("localHost", 10000);
 	         System.out.print("Server has connected!\n");
-	         PrintWriter out = new PrintWriter(skt.getOutputStream(), true);
-	         System.out.print("Sending string: '" + "This is a test" + "'\n");
-	         out.println("This is a test");
-	         out.flush();
 	         BufferedReader in = new BufferedReader(new InputStreamReader(skt.getInputStream()));
 	         while(!in.ready()){}
 	         System.out.println(in.readLine());
 	         in.close();
-	         out.close();
+	         //out.close();
 	         skt.close();
 			
 		} catch (UnknownHostException e) {
@@ -27,5 +27,7 @@ public class loginServerTest {
 		} catch (IOException e) {
 			System.out.println("IO error");
 		}
-    }
+		
+	}
+
 }
