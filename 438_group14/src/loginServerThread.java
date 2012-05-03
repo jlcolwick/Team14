@@ -39,7 +39,6 @@ public class loginServerThread extends Thread{
 				System.out.println("New Connection to Login Server");
 				new loginServiceThread(socket).run();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		

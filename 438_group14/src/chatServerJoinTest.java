@@ -7,7 +7,7 @@ import java.net.UnknownHostException;
 import java.util.Scanner;
 
 
-public class chatServerTest {
+public class chatServerJoinTest {
 	
 	Scanner user;
 
@@ -17,23 +17,18 @@ public class chatServerTest {
 	public static void main(String[] args) {
 		Scanner user = new Scanner(System.in);
 		try {
-			 Socket skt = new Socket("localHost", 9001);
-	         System.out.print("Server has connected!\n");
+			 Socket skt = new Socket("localHost", Integer.parseInt(user.nextLine()));
 	         PrintWriter out = new PrintWriter(skt.getOutputStream(), true);
 	         BufferedReader in = new BufferedReader(new InputStreamReader(skt.getInputStream()));
 	         String msg = new String();
-	         msg = in.readLine();
-         	 skt = new Socket("localHost", Integer.parseInt(msg));
          	 System.out.println("Connected to Chatroom on Socket: " + skt.getPort());
-	         out = new PrintWriter(skt.getOutputStream(), true);
-	         in = new BufferedReader(new InputStreamReader(skt.getInputStream()));
 	         do{
-	        	 System.out.print("Type message here: ");
-	        	 msg = user.nextLine();
-		         out.println(msg);
-		         System.out.print("Sending string: '" + msg + "'\n");
-		         while(!in.ready()){}
+		         if(in.ready()){
+		         System.out.println("Stop");
 	         	 System.out.println(in.readLine());
+		         }else{
+		        	 System.out.println("Not Ready");
+		         }
 	         
 	         }while(!msg.equalsIgnoreCase("Quit"));
 	         System.out.println("Chat Room Closed");
@@ -44,6 +39,7 @@ public class chatServerTest {
 		} catch (UnknownHostException e) {
 			System.out.println("Server Not Found");
 		} catch (IOException e) {
+			e.printStackTrace();
 			System.out.println("IO error");
 		}
 		
