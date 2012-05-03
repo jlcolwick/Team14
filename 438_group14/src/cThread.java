@@ -103,7 +103,7 @@ public class cThread extends Thread
 
 				else if (msg.startsWith("Post "))
 				{
-					
+					sendList();
 
 						//Iterate through all clients and pass out message
 						for (int i = 0; i < server.clients.size() ; i ++)
