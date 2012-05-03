@@ -25,10 +25,12 @@ public class loginServiceThread extends Thread{
 		try {
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			out = new PrintWriter(socket.getOutputStream(), true);
+			String [] query = new String[2];
         	while(!in.ready()){};
-			System.out.println(in.readLine());
+        	query = in.readLine().split(":");
+			System.out.println(query[0] + " " + query[1]);
 			System.out.println("Sending return");
-			out.println("Successful");
+			out.println(new DBData().validateLogin(query[0], query[1]));
 			out.flush();
         	in.close();
         	socket.close();
