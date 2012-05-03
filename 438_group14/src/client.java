@@ -375,6 +375,8 @@ class client extends JFrame
 				jMenuItem5.setEnabled(true);
 			}
 			setTitle("Simple Java Chat - " + nick + " - Connected to " + server + " in room " + this.currentRoom);
+			client.mainText.setText(client.mainText.getText() + "\n" + "Welcome " + nick + " to the " + this.currentRoom + " chat room.");
+			client.mainText.setCaretPosition(client.mainText.getText().length());
 		}
 	}
 	
@@ -393,6 +395,11 @@ class client extends JFrame
 		                    null,
 		                    possibilities,
 		                    this.currentRoom);
+		
+		if( s.equals(this.currentRoom)){
+			JOptionPane.showMessageDialog(null, "You are already part of that room!.");
+			return;
+		}
 		
 		if ( s != null){
 			this.currentRoom = s;

@@ -65,6 +65,7 @@ public class cThread extends Thread
 				if (msg.startsWith("Login"))
 				{
 					login(msg);
+					
 				}
 				//logout
 				else if (msg.equals("Logout"))
@@ -227,6 +228,7 @@ public class cThread extends Thread
 			nick = msg.substring(7,msg.length());
 			currentRoom = "common";
 			sendList();
+			sendRoomList();
 		}
 		
 		send("Receive " + "Joined Room: " + currentRoom);
@@ -281,7 +283,7 @@ public class cThread extends Thread
 		{
 			return;
 		}
-
+		
 		//add users to list
 		for (int i = 0;i<server.clients.size();i++)
 		{
